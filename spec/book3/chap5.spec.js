@@ -86,7 +86,7 @@ describe('Prototypes', () => {
 
       const myObject = Object.create(anotherObject);
 
-      it('should add the property to the child if used', () => {
+      it('should add the property to the child if used on child', () => {
         expect(anotherObject.a).toBe(2);
         expect(myObject.a).toBe(2);
 
@@ -142,6 +142,28 @@ describe('Prototypes', () => {
       it('should have a undefined prototype', () => {
         expect(ø.prototype).toBeUndefined();
       });
+    });
+  });
+
+  describe('the constructor', () => {
+    it('should link it by the constructor property if new is used', () => {
+      const foo = function () {
+        return 'something';
+      };
+
+      const bar = new foo();
+
+      expect(bar.constructor === foo).toBe(true);
+    });
+
+    it('can be replaced after creation ', () => {
+      function Foo() { /* .. */ }
+
+      Foo.prototype = { /* .. */ };
+
+      const a1 = new Foo();
+      expect(a1.constructor).not.toBe(Foo);
+      expect(a1.constructor).toBe(Object);
     });
   });
 });
