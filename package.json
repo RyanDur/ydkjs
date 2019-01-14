@@ -1,0 +1,10 @@
+{
+  "name": "ydkjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^3.3.1"
+  },
+  "scripts": { "test": "jasmine" }
+}
